@@ -36,7 +36,7 @@ resource "google_compute_instance" "server" {
 /*
 
 Interpolation
-
+--------------
 Variables
 ${var.name}
 
@@ -45,3 +45,25 @@ ${var.name["key"]}
 
 List index -> indexing starts at 0
 ${var.name["key"]}
+
+Resource attributes
+${type.name.attribute}
+
+Data Sources
+${data.type.name.attribute}
+
+Interpolation conditions
+Making branching decisions in configuration
+${condition ? true_expr : false_expr}
+
+Equality : == !=
+Numerical <, >, <= and >=
+Logical && || !
+true and false must be valid interpolation and both must be of the same type
+
+machine_type = "${var.environment == "production" ? "n1-highmem-64" : "n1-standard-1"}"
+
+
+
+
+*/
