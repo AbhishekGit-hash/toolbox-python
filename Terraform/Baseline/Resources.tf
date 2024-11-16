@@ -24,3 +24,5 @@ create_before_destroy = true or false (default = false)
 prevent_destroy = true or false (default = false)
 ignore_changes = list of attributes
 */
+
+# State terraform.tfstate
