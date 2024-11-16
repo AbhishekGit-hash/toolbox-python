@@ -1,0 +1,47 @@
+
+provider "google" {
+  /* GCP Credentials set with
+    GOOGLE_CREDENTIALS environment variable */
+
+  version = "~> 1.7"
+  project = "cloud-academy-terraform"
+  region = "us-central1"
+}
+
+# Image for the instance to use 
+variable "image" {
+  default = "debian-cloud/debian8"
+}
+
+# resource TYPE NAME
+resource "google_compute_instance" "server" {
+  name = "test"
+  machine_type = "n1-standard-1"
+  zone = "us-central-1"
+
+  # Lists
+  tags = ["team-a", "demo"]
+
+  # Maps
+  boot_disk = {
+      initialize_params {
+         image = "${var.image}"
+      }
+  }
+  network_instance {
+    network = "default"
+  }
+}
+
+/*
+
+Interpolation
+
+Variables
+${var.name}
+
+Map key value
+${var.name["key"]}
+
+List index -> indexing starts at 0
+${var.name["key"]}
