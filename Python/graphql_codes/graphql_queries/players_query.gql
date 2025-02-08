@@ -135,3 +135,37 @@ fragment PlayerPerformanceFields on Player {
   pts
   usgPct
 }
+
+# Directives
+# @skip and @include as a part of graphql spec
+query getSomePlayerAttrs($noweight : Boolean!) {
+  players (random: true, limit: 1){
+    ...Fields 
+  }
+}
+
+fragment Fields on Player {
+  playerName
+  playerHeight
+  teamAbbreviation
+  draftYear
+  draftRound
+  playerWeight @skip(if : $noweight) # skip playerWeight if the flag is set to True
+}
+
+# query to get players shorter than 180 cms
+query getRandomPlayersShorterThan (
+  $height : Float!,
+  $season : String!
+)
+{
+  players(
+    playerHeight: { lt: $height }, # lt is less than
+    season: $season,
+    random: true,
+    limit: 10
+  )
+  {
+    ...PlayerInfoFields
+  }
+}
