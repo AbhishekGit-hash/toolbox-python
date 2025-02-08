@@ -1,0 +1,137 @@
+
+# https://andybek.com/gql-nba
+
+
+# Selection Sets
+{
+  players{
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# query operator with operation name 
+query getPlayerDetails 
+{
+  players{
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# arguments
+# query to give 5 players
+query getFivePlayerDetails 
+{
+  players (limit : 5) {
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# skip first 5 and then give next 5 players
+# pagination
+query getNextFivePlayerDetails 
+{
+  players (limit : 5, skip : 5) {
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# random 5 players
+query getRandomFivePlayerDetails 
+{
+  players (limit : 5, random : true) {
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# query for teamAbbreviation and season
+query getTDRteamAbbreviation
+{
+  players (
+    teamAbbreviation : "TOR", 
+    season : "2018-19", 
+    limit:20
+    ) {
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# query for teamAbbreviation and season
+query team_and_season (
+  								$team : String!,  # required
+  								$season : String!, # required
+  								$limit : Int # optional
+                  )
+
+{
+  players (
+    teamAbbreviation : $team, 
+    season : $season, 
+    limit:$limit
+  ) {
+    playerName
+    playerHeight
+    playerWeight
+    teamAbbreviation
+    draftYear
+    draftRound
+  }
+}
+
+# query using fragements <fragement-name> on <type>
+query player_info_and_performance (
+  								$team : String,  # optional
+  								$season : String, # optional
+  								$limit : Int # optional
+                  )
+
+{
+  players (
+    teamAbbreviation : $team, 
+    season : $season, 
+    limit:$limit
+  ) {
+    ...PlayerInfoFields
+    teamAbbreviation
+    ...PlayerPerformanceFields
+  }
+}
+
+fragment PlayerInfoFields on Player {
+  playerName
+  playerHeight
+}
+
+fragment PlayerPerformanceFields on Player {
+  pts
+  usgPct
+}
