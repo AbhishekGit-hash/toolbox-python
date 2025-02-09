@@ -9,6 +9,7 @@ from graphene import (
     Field
 )
 
+
 employers_data = [
     {"id": 1, "name": "MetaTechA", "contact_email": "contact@company-a.com", "industry": "Tech"},
     {"id": 2, "name": "MoneySoftB", "contact_email": "contact@company-b.com", "industry": "Finance"},
