@@ -4,3 +4,5 @@ fastapi
 uvicorn
 starlette-graphene3
 sqlalchemy
+python-dotenv
+psycopg2-binary
