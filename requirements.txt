@@ -3,3 +3,4 @@ graphene
 fastapi
 uvicorn
 starlette-graphene3
+sqlalchemy
