@@ -9,6 +9,11 @@ function show_curr_dir {
     echo "$THIS_DIR/"
 }
 
+# run the uvicorn server at localhost 8000
+function run_server {
+    uvicorn api_backbone:app --reload
+}
+
 
 # Check if a function name was provided as an argument
 if [[ $# -gt 0 ]]; then
