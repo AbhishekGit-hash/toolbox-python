@@ -14,6 +14,9 @@ function run_server {
     uvicorn api_backbone:app --reload
 }
 
+function run_gql_app_main {
+    uvicorn gql-app-main.app.main:app --reload
+}
 
 # Check if a function name was provided as an argument
 if [[ $# -gt 0 ]]; then

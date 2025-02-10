@@ -8,3 +8,6 @@ curr_dir: # Shows the current directory
 
 launch_server:
 	@bash graphql_run.sh run_server
+
+launch_gql_app:
+	@bash graphql_run.sh run_gql_app_main
