@@ -44,3 +44,43 @@ project_name/
 ├── pyproject.toml         # Modern Python packaging configuration
 ├── requirements.txt       # Dependencies (alternative to `pyproject.toml`)
 └── README.md              # Project overview
+
+
+2nd structure
+
+your_project/
+│── src/                     # Source code directory
+│   ├── your_module/         # Main module
+│   │   ├── __init__.py      # Makes this a package
+│   │   ├── main.py          # Entry point (if applicable)
+│   │   ├── config.py        # Configuration settings
+│   │   ├── utils.py         # Helper functions
+│   │   ├── models/          # Database or data models
+│   │   │   ├── __init__.py
+│   │   │   ├── some_model.py
+│   │   ├── services/        # Business logic
+│   │   │   ├── __init__.py
+│   │   │   ├── some_service.py
+│   │   ├── pipelines/       # ETL or data processing logic
+│   │   │   ├── __init__.py
+│   │   │   ├── some_pipeline.py
+│   │   ├── clients/         # External service integrations (APIs, DBs)
+│   │   │   ├── __init__.py
+│   │   │   ├── some_client.py
+│── tests/                   # Test cases
+│   ├── __init__.py
+│   ├── test_main.py
+│   ├── test_some_module.py
+│── configs/                 # Config files (YAML, JSON, ENV)
+│   ├── config.yaml
+│── scripts/                 # Utility scripts for automation
+│   ├── some_script.py
+│── requirements.txt         # Python dependencies
+│── pyproject.toml           # Preferred over setup.py for modern packaging
+│── setup.cfg                # Additional configurations
+│── .env                     # Environment variables (ignored in git)
+│── .gitignore               # Ignore unnecessary files
+│── README.md                # Documentation
+│── Dockerfile               # If containerization is needed
+│── Makefile                 # Build automation
+│── .pre-commit-config.yaml  # Pre-commit hooks for code quality
