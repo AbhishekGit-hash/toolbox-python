@@ -175,3 +175,15 @@ dist
 *env
 *.env
 *cache*
+
+# FastAPI repo
+/fastapienv/
+/.idea/FastAPI-The-Complete-Course.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/vcs.xml
+
+__pycache__/
+.idea
+env
